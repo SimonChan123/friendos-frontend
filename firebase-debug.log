@@ -1,0 +1,10 @@
+[debug] [2019-12-18T02:04:17.591Z] ----------------------------------------------------------------------
+[debug] [2019-12-18T02:04:17.593Z] Command:       /usr/local/Cellar/node/13.3.0_1/bin/node /usr/local/bin/firebase deploy
+[debug] [2019-12-18T02:04:17.593Z] CLI Version:   7.9.0
+[debug] [2019-12-18T02:04:17.593Z] Platform:      darwin
+[debug] [2019-12-18T02:04:17.594Z] Node Version:  v13.3.0
+[debug] [2019-12-18T02:04:17.595Z] Time:          Tue Dec 17 2019 20:04:17 GMT-0600 (Central Standard Time)
+[debug] [2019-12-18T02:04:17.595Z] ----------------------------------------------------------------------
+[debug] [2019-12-18T02:04:17.595Z] 
+[error] 
+[error] Error: Not in a Firebase app directory (could not locate firebase.json)
