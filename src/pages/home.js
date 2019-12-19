@@ -25,10 +25,14 @@ class home extends Component {
 
     render() {
         let recentPostsMarkup = this.state.posts ? (
-            this.state.posts.map((post) => <Post post={post}/>)
-        ) : <p>Loading posts...</p>;
+            this.state.posts.map((post) => (
+                <Post key={post.postID} post={post} />
+            )) 
+        ) : ( 
+            <p>Loading posts...</p> 
+        );
         return (
-            <Grid container spacing={16}>
+            <Grid container spacing={10}>
                 <Grid item sm={4} xs={12}>
                     <p>profile</p>
                 </Grid>
