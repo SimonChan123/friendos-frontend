@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 
 // Import custom Post component
 import Post from '../components/Post';
+import Profile from '../components/Profile';
 
 class home extends Component {
     state = {
@@ -32,9 +33,9 @@ class home extends Component {
             <p>Loading posts...</p> 
         );
         return (
-            <Grid container spacing={10}>
+            <Grid container spacing={2}>
                 <Grid item sm={4} xs={12}>
-                    <p>profile</p>
+                    <Profile />
                 </Grid>
                 <Grid item sm={8} xs={12}>
                     {recentPostsMarkup}
