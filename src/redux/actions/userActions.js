@@ -1,4 +1,11 @@
-import { SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, LOADING_USER, SET_UNAUTHENTICATED } from '../types';
+import { 
+    SET_USER, 
+    SET_ERRORS, 
+    CLEAR_ERRORS, 
+    LOADING_UI, 
+    LOADING_USER, 
+    SET_UNAUTHENTICATED 
+} from '../types';
 import axios from 'axios';
 
 export const loginUser = (userData, history) => (dispatch) => {

@@ -1,34 +1,26 @@
 import React, { Component } from 'react'
-import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
+
+// Redux imports
+import { connect } from 'react-redux';
+import { getPosts } from '../redux/actions/dataActions';
 
 // Import custom Post component
 import Post from '../components/Post';
 import Profile from '../components/Profile';
 
 class home extends Component {
-    state = {
-        posts: null
-    }
-
     componentDidMount(){
-        axios.get('/posts')
-            .then(response => {
-                console.log(response.data);
-                this.setState({
-                    posts: response.data
-                })
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        this.props.getPosts();
     }
 
     render() {
-        let recentPostsMarkup = this.state.posts ? (
-            this.state.posts.map((post) => (
+        const { posts, loading } = this.props.data;
+        let recentPostsMarkup = !loading ? (
+            posts.map((post) => 
                 <Post key={post.postID} post={post} />
-            )) 
+            ) 
         ) : ( 
             <p>Loading posts...</p> 
         );
@@ -45,4 +37,15 @@ class home extends Component {
     }
 }
 
-export default home
+home.propTypes = {
+    getPosts: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = (state) =>({
+    data: state.data
+});
+
+const mapActionsToProps = { getPosts };
+
+export default connect(mapStateToProps, mapActionsToProps)(home);
