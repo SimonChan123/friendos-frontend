@@ -1,5 +1,6 @@
 
 import React, { Component, Fragment } from 'react';
+import LikeButton from './LikeButton';
 import MyButtton from '../util/MyButtton';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -13,11 +14,11 @@ import { getPost } from '../redux/actions/dataActions';
 // material ui icon imports
 import CloseIcon from '@material-ui/icons/Close';
 import UnfoldMore from '@material-ui/icons/UnfoldMore';
+import ChatIcon from '@material-ui/icons/Chat';
 
 // material ui imports
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -40,6 +41,15 @@ const styles = (theme) => ({
       closeButton: {
         position: 'absolute',
         left: '90%'
+      },
+      expandButton: {
+          position: 'absolute',
+          left: '90%'
+      },
+      spinnerContainer: {
+          textAlign: 'center',
+          marginTop: 50,
+          marginBottom: 50
       }
 });
 
@@ -71,7 +81,9 @@ class PostDialog extends Component {
                 }} = this.props;
 
         const dialogMarkup = loading ? (
-            <CircularProgress size={200} />
+            <div className={classes.spinnerContainer}>
+                <CircularProgress size={200} thickness={2}/>
+            </div>
         ) : (
             <Grid container spacing={1}>
                 <Grid item sm={5}>
@@ -89,6 +101,14 @@ class PostDialog extends Component {
                     <Typography variant="body1">
                         {body}
                     </Typography>
+                    <LikeButton postID={postID} />
+                    <span>
+                         {likeCount} like(s)
+                    </span>
+                    <MyButtton tip="Comment on this post">
+                        <ChatIcon color="primary" />
+                    </MyButtton>
+                    <span>{commentCount} comment(s) </span>
                 </Grid>
             </Grid>
         );
@@ -107,9 +127,6 @@ class PostDialog extends Component {
                     <MyButtton tip="Close window" onClick={this.handleClose} tipClassName={classes.closeButton}>
                         <CloseIcon />
                     </MyButtton>
-                    <DialogTitle>
-                        Post Dialog Title
-                    </DialogTitle>
                     <DialogContent className={classes.dialogContent}>
                         {dialogMarkup}
                     </DialogContent>

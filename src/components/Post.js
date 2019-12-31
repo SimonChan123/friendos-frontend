@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
+import LikeButton from './LikeButton';
 import MyButtton from '../util/MyButtton';
 import PostDialog from './PostDialog';
 import DeletePost from './DeletePost';
@@ -10,12 +11,9 @@ import PropTypes from 'prop-types';
 
 // Redux imports
 import { connect } from 'react-redux';
-import { likePost, unlikePost } from '../redux/actions/dataActions';
 
 // Material UI Icons
 import ChatIcon from '@material-ui/icons/Chat';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 
 // Material UI Card imports
 import Card from '@material-ui/core/Card';
@@ -76,24 +74,6 @@ class Post extends Component {
                 }
         } = this.props;
 
-        const likeButton = !authenticated ? (
-            <MyButtton tip="Like - must be logged in">
-                <Link to="/login">
-                    <FavoriteBorder color="primary" />
-                </Link>
-            </MyButtton>
-        ) : (
-            this.likedPost() ? (
-                <MyButtton tip="Unlike this post" onClick={this.unlikePost}>
-                    <FavoriteIcon color="primary" />
-                </MyButtton>
-            ) : (
-                <MyButtton tip="Like this post" onClick={this.likePost}>
-                    <FavoriteBorder color="primary" />
-                </MyButtton>
-            )
-        );
-
         const deleteButton = authenticated && userHandle === handle ? (
             <DeletePost postID={postID} />
         ) : (null);
@@ -112,12 +92,12 @@ class Post extends Component {
                     <Typography variant="body1">
                         {body}
                     </Typography>
-                    {likeButton}
-                    <span>{likeCount} Likes </span>
+                    <LikeButton postID={postID} />
+                    <span>{likeCount} Like(s) </span>
                     <MyButtton tip="Comment on this post">
                         <ChatIcon color="primary" />
                     </MyButtton>
-                    <span>{commentCount} comments</span>
+                    <span>{commentCount} comment(s) </span>
                     <PostDialog postID={postID} userHandle={userHandle} />
                 </CardContent>
             </Card>
@@ -126,8 +106,6 @@ class Post extends Component {
 }
 
 Post.propTypes = {
-    likePost: PropTypes.func.isRequired,
-    unlikePost: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     post: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired
@@ -137,6 +115,6 @@ const mapStateToProps = (state) =>({
     user: state.user
 });
 
-const mapActionsToProps = { likePost, unlikePost };
+const mapActionsToProps = null;
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Post));

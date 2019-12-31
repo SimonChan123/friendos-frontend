@@ -43,12 +43,18 @@ export default function(state = initialState, action) {
         case LIKE_POST:
             let likeIndex = state.posts.findIndex((post) => post.postID === action.payload.postID);
             state.posts[likeIndex] = action.payload;
+            if (state.post.postID === action.payload.postID) {
+                state.post = action.payload;
+            }
             return {
                 ...state,
             };
         case UNLIKE_POST:
             let unlikeIndex = state.posts.findIndex((post) => post.postID === action.payload.postID);
             state.posts[unlikeIndex] = action.payload;
+            if (state.post.postID === action.payload.postID) {
+                state.post = action.payload;
+            }
             return {
                 ...state,
             };
