@@ -5,7 +5,8 @@ import {
     UNLIKE_POST, 
     LOADING_DATA, 
     DELETE_POST, 
-    ADD_POST
+    ADD_POST,
+    SUBMIT_COMMENT
 } from '../types';
 
 const initialState = {
@@ -63,6 +64,14 @@ export default function(state = initialState, action) {
             state.posts.splice(deleteIndex, 1);
             return {
                 ...state,
+            };
+        case SUBMIT_COMMENT:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    comments: [action.payload, ...state.post.comments]
+                }
             };
         default:
             return state;

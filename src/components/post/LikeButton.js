@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import MyButtton from '../util/MyButtton';
+import MyButtton from '../../util/MyButtton';
 import PropTypes from 'prop-types';
 
 // Redux imports
 import { connect } from 'react-redux';
-import { likePost, unlikePost } from '../redux/actions/dataActions';
+import { likePost, unlikePost } from '../../redux/actions/dataActions';
 
 // Material UI Icons
 import FavoriteIcon from '@material-ui/icons/Favorite';

@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import MyButtton from '../util/MyButtton';
+import MyButtton from '../../util/MyButtton';
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 
 // Redux imports
 import { connect } from 'react-redux';
-import { deletePost } from '../redux/actions/dataActions';
+import { deletePost } from '../../redux/actions/dataActions';
 
 // Material UI Icons
 import DeleteOutline from '@material-ui/icons/DeleteOutline';

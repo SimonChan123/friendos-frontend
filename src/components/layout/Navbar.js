@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import AddPost from './AddPost';
-import MyButton from '../util/MyButtton';
+import AddPost from '../post/AddPost';
+import MyButton from '../../util/MyButtton';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 

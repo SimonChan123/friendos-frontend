@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 import { getPosts } from '../redux/actions/dataActions';
 
 // Import custom Post component
-import Post from '../components/Post';
-import Profile from '../components/Profile';
+import Post from '../components/post/Post';
+import Profile from '../components/profile/Profile';
 
 class home extends Component {
     componentDidMount(){

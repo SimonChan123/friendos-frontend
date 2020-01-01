@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
 import LikeButton from './LikeButton';
-import MyButtton from '../util/MyButtton';
+import MyButtton from '../../util/MyButtton';
 import PostDialog from './PostDialog';
 import DeletePost from './DeletePost';
 import dayjs from 'dayjs';

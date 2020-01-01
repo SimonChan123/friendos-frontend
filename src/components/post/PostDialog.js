@@ -1,7 +1,9 @@
 
 import React, { Component, Fragment } from 'react';
 import LikeButton from './LikeButton';
-import MyButtton from '../util/MyButtton';
+import Comments from './Comments';
+import CommentForm from './CommentForm';
+import MyButtton from '../../util/MyButtton';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import dayjs from 'dayjs';
@@ -9,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 // redux imports
 import { connect } from 'react-redux';
-import { getPost } from '../redux/actions/dataActions';
+import { getPost, clearErrors } from '../../redux/actions/dataActions';
 
 // material ui icon imports
 import CloseIcon from '@material-ui/icons/Close';
@@ -25,10 +27,6 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = (theme) => ({
     ...theme.spreadThis,
-    invisibleSeparator: {
-        border: 'none',
-        margin: 4
-    },
     profileImage: {
         maxWidth: 200,
         height: 200,
@@ -65,6 +63,7 @@ class PostDialog extends Component {
 
     handleClose = () => {
         this.setState({ open: false });
+        this.props.clearErrors();
     };
 
     render() {
@@ -77,7 +76,8 @@ class PostDialog extends Component {
                     likeCount, 
                     commentCount, 
                     userImage, 
-                    userHandle 
+                    userHandle,
+                    comments
                 }} = this.props;
 
         const dialogMarkup = loading ? (
@@ -110,6 +110,9 @@ class PostDialog extends Component {
                     </MyButtton>
                     <span>{commentCount} comment(s) </span>
                 </Grid>
+                <hr className={classes.visibleSeparator} />
+                <CommentForm postID={postID} />
+                <Comments comments={comments} />
             </Grid>
         );
 
@@ -139,6 +142,7 @@ class PostDialog extends Component {
 PostDialog.propTypes = {
     classes: PropTypes.object.isRequired,
     getPost: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
     postID: PropTypes.string.isRequired,
     userHandle: PropTypes.string.isRequired,
     post: PropTypes.object.isRequired,
@@ -150,6 +154,6 @@ const mapStateToProps = (state) =>({
     UI: state.UI
 });
 
-const mapActionsToProps = { getPost };
+const mapActionsToProps = { getPost, clearErrors };
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(PostDialog));

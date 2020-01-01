@@ -1,12 +1,12 @@
 
 import React, { Component, Fragment } from 'react';
-import MyButtton from '../util/MyButtton';
+import MyButtton from '../../util/MyButtton';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 // redux imports
 import { connect } from 'react-redux';
-import { addPost, clearErrors } from '../redux/actions/dataActions';
+import { addPost, clearErrors } from '../../redux/actions/dataActions';
 
 // material ui icon imports
 import AddIcon from '@material-ui/icons/Add';
@@ -44,7 +44,7 @@ class AddPost extends Component {
         errors: {}
     };
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.UI.errors) {
             this.setState({ errors: nextProps.UI.errors });
         }
