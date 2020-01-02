@@ -118,6 +118,7 @@ export const deletePost = (postID) => (dispatch) => {
         .catch(err => console.log(err));
 };
 
+// get user profile and their posts [different from userAction]
 export const getUserData = (userHandle) => (dispatch) => {
     dispatch({ type: LOADING_DATA });
     axios.get(`/user/${userHandle}`)
@@ -133,7 +134,7 @@ export const getUserData = (userHandle) => (dispatch) => {
                 payload: null
             });
         });
-}
+};
 
 export const clearErrors = () => (dispatch) => {
     dispatch({ type: CLEAR_ERRORS });

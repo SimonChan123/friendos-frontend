@@ -69,7 +69,6 @@ Comments.propTypes = {
 }
 
 const mapStateToProps = (state) =>({
-    post: state.data.post,
     UI: state.UI
 });
 
