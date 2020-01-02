@@ -54,14 +54,34 @@ const styles = (theme) => ({
 class PostDialog extends Component {
     state = {
         open: false,
+        oldPath: '',
+        newPath: ''
     };
 
+    componentDidMount() {
+        if (this.props.openDialog) {
+            this.handleOpen();
+        }
+    }
+
     handleOpen = () => {
-        this.setState({ open: true });
+        let oldPath = window.location.pathname;
+
+        const { userHandle, postID } = this.props;
+        const newPath = `/users/${userHandle}/post/${postID}`;
+
+        if (oldPath === newPath) {
+            oldPath = `/users/${userHandle}`;
+        }
+
+        window.history.pushState(null, null, newPath);
+
+        this.setState({ open: true, oldPath, newPath });
         this.props.getPost(this.props.postID);
     };
 
     handleClose = () => {
+        window.history.pushState(null, null, this.state.oldPath);
         this.setState({ open: false });
         this.props.clearErrors();
     };
@@ -95,7 +115,7 @@ class PostDialog extends Component {
                     </Typography>
                     <hr className={classes.invisibleSeparator} />
                     <Typography color="textSecondary" variant="body2">
-                        {dayjs(createdAt).format('h:mm a, MMM DD YYYY')}
+                        {dayjs(createdAt).format('h:mm a, MMM DD, YYYY')}
                     </Typography>
                     <hr className={classes.invisibleSeparator} />
                     <Typography variant="body1">
