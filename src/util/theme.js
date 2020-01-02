@@ -7,9 +7,9 @@ export default {
         contrastText: '#fff'
       },
       secondary: {
-        light: '#3378af',
-        main: '#01579b',
-        dark: '#003c6c',
+        light: '#ff6333',
+        main: '#ff3d00',
+        dark: '#b22a00',
         contrastText: '#fff'
       }
     },
@@ -50,6 +50,51 @@ export default {
       customError: {
           color: 'red',
           fontSize: '0.8rem'
+      },
+      paper: {
+        padding: 20
+      },
+      profile: {
+          '& .image-wrapper': {
+              textAlign: 'center',
+              position: 'relative',
+              '& button': {
+                  position: 'absolute',
+                  top: '80%',
+                  left: '70%'
+              }
+          },
+          '& .profile-image': {
+              width: 200,
+              height: 200,
+              objectFit: 'cover',
+              maxWidth: '100%',
+              borderRadius: '50%'
+          },
+          '& .profile-details': {
+              textAlign: 'center',
+              '& span, svg': {
+                  verticalAlign: 'middle'
+              },
+          '& a': {
+              color: '#01579b'
+          }
+          },
+          '& hr': {
+              border: 'none',
+              margin: '0 0 10px 0'
+          },
+          '& svg.button': {
+              '&:hover': {
+                  cursor: 'pointer'
+              }
+          }
+      },
+      buttons: {
+          textAlign: 'center',
+          '& a': {
+              margin: '20px 10px'
+          }
       }
     }
   }

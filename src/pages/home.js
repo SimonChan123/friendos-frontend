@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
+import Post from '../components/post/Post';
+import Profile from '../components/profile/Profile';
+import PostSkeleton from '../util/PostSkeleton';
 
 // Redux imports
 import { connect } from 'react-redux';
 import { getPosts } from '../redux/actions/dataActions';
-
-// Import custom Post component
-import Post from '../components/post/Post';
-import Profile from '../components/profile/Profile';
 
 class home extends Component {
     componentDidMount(){
@@ -21,8 +20,8 @@ class home extends Component {
             posts.map((post) => 
                 <Post key={post.postID} post={post} />
             ) 
-        ) : ( 
-            <p>Loading posts...</p> 
+        ) : (
+            <PostSkeleton />
         );
         return (
             <Grid container spacing={2}>

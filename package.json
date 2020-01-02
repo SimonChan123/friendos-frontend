@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.0",
     "dayjs": "^1.8.18",
+    "firebase-tools": "^7.11.0",
     "jwt-decode": "^2.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -18,7 +19,8 @@
     "react-scripts": "3.3.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
-    "serialize-javascript": "^2.1.2"
+    "serialize-javascript": "^2.1.2",
+    "serve": "^11.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,6 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://us-central1-friendo-13f2a.cloudfunctions.net/api"
+  }
 }
